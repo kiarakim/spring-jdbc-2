@@ -29,16 +29,4 @@ public class ItemServiceApplication {
 	public TestDataInit testDataInit(ItemRepository itemRepository) {
 		return new TestDataInit(itemRepository);
 	}
-
-	@Bean
-    @Profile("test")
-    public DataSource dataSource() {
-		log.info("메모리 데이터베이스 초기화");
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.h2.Driver");
-		dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"); // 임베디드 모드(메모리 모드)로 동작하는 h2 DB 를 사용할 수 있다.
-		dataSource.setUsername("sa");
-		dataSource.setPassword("");
-		return dataSource;
-	}
 }
